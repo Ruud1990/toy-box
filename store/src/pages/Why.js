@@ -2,7 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -21,11 +20,11 @@ const steps = [
   },
   {
     label: 'Elastyczność i Oszczędność Finansowa',
-    description: `Dzięki systemowi wypożyczania nie musisz inwestować w kolejne zabawki, które dzieci szybko wyrastają. Oszczędzasz czas i pieniądze, korzystając z elastycznego systemu rotacji zabawek.`,
+    description: `Dzięki systemowi wypożyczania nie musisz inwestować w kolejne zabawki, z których dzieci szybko wyrastają. Oszczędzasz czas i pieniądze, korzystając z elastycznego systemu rotacji zabawek.`,
   },
   {
     label: 'Stałe Dostosowanie do Rozwoju Dziecka',
-    description: `Dzieci szybko rosną i zmieniają swoje zainteresowania. Dzięki wypożyczaniu możesz regularnie dostosowywać zestawy zabawek do aktualnych potrzeb i preferencji dziecka.stemu rotacji zabawek.`,
+    description: `Dzieci szybko rosną i zmieniają swoje zainteresowania. Dzięki wypożyczaniu możesz regularnie dostosowywać zestawy zabawek do aktualnych potrzeb i preferencji dziecka.`,
   },
   {
     label: 'Wsparcie Dla Rodziców',
@@ -47,52 +46,45 @@ const Why = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   return (
-    <><div>Dlaczego Warto Wypożyczać Zabawki dla Dzieci?
-
-
-      </div><Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-              <Paper
-                  square
-                  elevation={0}
-                  sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      height: 50,
-                      pl: 2,
-                      bgcolor: 'background.default',
-                  }}
-              >
-                  <Typography>{steps[activeStep].label}</Typography>
-              </Paper>
-              <Box sx={{ height: 255, maxWidth: 400, width: '100%', p: 2 }}>
-                  {steps[activeStep].description}
-              </Box>
-              <MobileStepper
-                  variant="text"
-                  steps={maxSteps}
-                  position="static"
-                  activeStep={activeStep}
-                  nextButton={<Button
-                      size="small"
-                      onClick={handleNext}
-                      disabled={activeStep === maxSteps - 1}
-                  >
-                      Next
-                      {theme.direction === 'rtl' ? (
-                          <KeyboardArrowLeft />
-                      ) : (
-                          <KeyboardArrowRight />
-                      )}
-                  </Button>}
-                  backButton={<Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                      {theme.direction === 'rtl' ? (
-                          <KeyboardArrowRight />
-                      ) : (
-                          <KeyboardArrowLeft />
-                      )}
-                      Back
-                  </Button>} />
-          </Box></>
+    <><Typography sx={{ marginBottom: '40px', marginTop: '40px', textAlign: 'center' }}>Dlaczego Warto Wypożyczać Zabawki dla Dzieci? </Typography>
+    <Box sx={{
+      maxHeight: 300,
+      marginTop: '40px',
+      marginBottom: '20px',
+      // textAlign: 'center',
+      backgroundColor: '#f5f5f5', // Domyślne tło
+    }}>
+      <Box sx={{ maxWidth: 400, flexGrow: 1, margin: '0 auto', textAlign: 'center' }}>
+          <Typography sx={{ textAlign: 'center', paddingTop: '20px' }}>{steps[activeStep].label}</Typography>
+        <Box sx={{ height: 150, maxWidth: 400, width: '100%', p: 1, textAlign: 'center', marginTop: '55px', }}>
+          {steps[activeStep].description}
+        </Box>
+        <MobileStepper
+          variant="text"
+          steps={maxSteps}
+          position="static"
+          activeStep={activeStep}
+          nextButton={<Button
+            size="small"
+            onClick={handleNext}
+            disabled={activeStep === maxSteps - 1}
+          >
+            
+            {theme.direction === 'rtl' ? (
+              <KeyboardArrowLeft />
+            ) : (
+              <KeyboardArrowRight />
+            )}
+          </Button>}
+          backButton={<Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+            {theme.direction === 'rtl' ? (
+              <KeyboardArrowRight />
+            ) : (
+              <KeyboardArrowLeft />
+            )}
+            
+          </Button>} />
+      </Box></Box></>
   )
 }
 

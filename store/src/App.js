@@ -9,8 +9,14 @@ import About from './pages/About';
 import CartProvider from './CartContext';
 import Questions from './pages/Questions';
 import Why from './pages/Why';
+import Contact from './pages/Contact';
+import Footer from './components/Footer';
+import Rules from './pages/Rules';
+import Privacy from './pages/Privacy';
 
 function App() {
+  
+
   return (
     <CartProvider>
       <BrowserRouter>
@@ -24,7 +30,11 @@ function App() {
             <Route path="dlaczego-warto" element={<Why />} />
             <Route path="success" element={<Success />} />
             <Route path="cancel" element={<Cancel />} />
+            <Route path="kontakt" element={<Contact />} />
+            <Route path="regulamin" element={<Rules />} />
+            <Route path="polityka-prywatności" element={<Privacy />} />
           </Routes>
+          <Footer/>
         </Container>
       </BrowserRouter>
     </CartProvider>

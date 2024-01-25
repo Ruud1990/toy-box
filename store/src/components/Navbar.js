@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useState, useContext} from 'react';
+import { useContext} from 'react';
 import { CartContext } from '../CartContext';
 import CartProduct from './CartProduct';
 import AppBar from '@mui/material/AppBar';
@@ -14,26 +14,30 @@ import Container from '@mui/material/Container';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import Modal from '@mui/material/Modal';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import CloseIcon from '@mui/icons-material/Close';
+import ContactForm from './ContactForm';
 import ListItemText from '@mui/material/ListItemText';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
-import CommentIcon from '@mui/icons-material/Comment';
+import Divider from '@mui/material/Divider';
+import { shipmentArray } from '../productsStore';
+import logo from '../img/logo_fun_box.png';
 
 const pages = ['O nas', 'Zestawy', 'Pytania i odpowiedzi', 'Dlaczego warto', 'Kontakt'];
 
 const style = {
+  maxHeight: '80vh',
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: '400',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  overflowY: 'auto',
 };
 
 
@@ -52,48 +56,37 @@ const Navbar = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const checkout = async () => {
-        await fetch('http://localhost:4000/checkout', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({items: cart.items})
-        }).then((response) => {
-            return response.json();
-        }).then((response) => {
-            if(response.url) {
-                window.location.assign(response.url); // Forwarding user to Stripe
-            }
-        });
-    }
-
 
   const cart = useContext(CartContext);
 
   const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0);
+  
   
 
 
   return (
     <>
 
-    <AppBar position="static">
+    <AppBar position="static" sx={{ bgcolor: '#fea916' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
+          <img
+        src={logo}
+        alt='logo'
+        style={{ width: '50px', height: '50px', marginRight: '10px' }}
+      />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#6414ab',
               textDecoration: 'none',
             }}
           >
@@ -137,7 +130,8 @@ const Navbar = () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
+          
           <Typography
             variant="h5"
             noWrap
@@ -149,8 +143,8 @@ const Navbar = () => {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
+              letterSpacing: '.1rem',
+              color: '#6414ab',
               textDecoration: 'none',
             }}
           >
@@ -171,7 +165,7 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-              <Button onClick={handleOpen} variant="contained" endIcon={<ShoppingCartOutlinedIcon />}>
+              <Button sx={{bgcolor: '#6414ab'}} onClick={handleOpen} variant="contained" endIcon={<ShoppingCartOutlinedIcon />}>
           {productsCount}
 </Button>
             
@@ -186,40 +180,48 @@ const Navbar = () => {
   aria-describedby="modal-modal-description"
 >
   <Box sx={style}>
-  {productsCount > 0 ?
-  <>
-    <Typography id="modal-modal-title" variant="h6" component="h2">
-     Twoje Zamówienie
-    </Typography>
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-  {cart.items.map((currentProduct, index) => (
-    <ListItem
-      key={currentProduct.title}
-      disableGutters
-      secondaryAction={
-        <TaskAltIcon>    
-        </TaskAltIcon>
-      }
+    <IconButton
+      aria-label="close"
+      onClick={handleClose}
+      sx={{
+        position: 'absolute',
+        top: '5px',
+        right: '5px',
+      }}
     >
-      <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity}></CartProduct>
-    </ListItem>
-  ))}
-</List>
-  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-      Total: {cart.getTotalCost().toFixed(2)}
-    </Typography>
-    <Button variant="contained" color="success" onClick={checkout}>
-  Success
-</Button>
-  </>
-  :
-    <Typography textAlign="center" id="modal-modal-description" sx={{ mt: 2 }}>
-      Twój koszyk jest pusty :(
-    </Typography>
-
-  }
+      <CloseIcon />
+    </IconButton>
+    {productsCount > 0 ? (
+      <Box>
+        <Typography id="modal-modal-title" variant="h6" component="h2">
+          Twoje Zamówienie
+        </Typography>
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+          {cart.items.map((currentProduct, index) => (
+            <ListItem key={currentProduct.title} disableGutters>
+              <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
+            </ListItem>
+          ))}
+        </List>
+        {/* Dodaj osobną pozycję dla wysyłki */}
+        <ListItem disableGutters>
+          <ListItemText primary="Wysyłka" />
+          <Typography>{shipmentArray[0].price.toFixed(2)}</Typography>
+        </ListItem>
+        <Divider />
+        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          Total: {(cart.getTotalCost() + shipmentArray[0].price).toFixed(2)}
+        </Typography>
+        <ContactForm />
+      </Box>
+    ) : (
+      <Typography textalign="center" id="modal-modal-description" sx={{ mt: 2 }}>
+        Twój koszyk jest pusty :(
+      </Typography>
+    )}
   </Box>
 </Modal>
+
     </>
   )
 }
