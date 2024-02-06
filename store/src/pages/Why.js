@@ -52,7 +52,7 @@ const Why = () => {
       marginTop: '40px',
       marginBottom: '20px',
       // textAlign: 'center',
-      backgroundColor: '#f5f5f5', // Domyślne tło
+      backgroundColor: '#f5f5f5',
     }}>
       <Box sx={{ maxWidth: 400, flexGrow: 1, margin: '0 auto', textAlign: 'center' }}>
           <Typography sx={{ textAlign: 'center', paddingTop: '20px' }}>{steps[activeStep].label}</Typography>

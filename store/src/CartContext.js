@@ -12,14 +12,12 @@ export const CartContext = createContext({
 
 export function CartProvider({ children }) {
     const [cartProducts, setCartProducts] = useState(() => {
-    // Pobieranie danych z local storage lub używanie wartości domyślnych
     const storedCartProducts = localStorage.getItem("cartProducts");
     return storedCartProducts ? JSON.parse(storedCartProducts) : [];
   });
     const [hasProducts, setHasProducts] = useState(false);
 
     useEffect(() => {
-        // Odczytaj dane z local storage przy montowaniu komponentu
         const savedCartData = localStorage.getItem("cartData");
         if (savedCartData) {
             setCartProducts(JSON.parse(savedCartData));
@@ -27,7 +25,6 @@ export function CartProvider({ children }) {
         }
     }, []);
 
-    // Zapisz dane do local storage po każdej zmianie w koszyku
     useEffect(() => {
         localStorage.setItem("cartData", JSON.stringify(cartProducts));
         setHasProducts(cartProducts.length > 0);
@@ -104,7 +101,6 @@ export function CartProvider({ children }) {
     }
 
     useEffect(() => {
-    // Zapisywanie danych koszyka do local storage po każdej zmianie
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
     setHasProducts(cartProducts.length > 0);
   }, [cartProducts]);

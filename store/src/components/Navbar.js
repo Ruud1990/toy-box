@@ -22,7 +22,7 @@ import ContactForm from './ContactForm';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { shipmentArray } from '../productsStore';
-import logo from '../img/logo_fun_box.png';
+import logo from '../img/logo_wypakuj.png';
 
 const pages = ['O nas', 'Zestawy', 'Pytania i odpowiedzi', 'Dlaczego warto', 'Kontakt'];
 
@@ -90,7 +90,7 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            FUN BOX
+            WYPAKUJ MNIE
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -148,7 +148,7 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            FUN BOX
+            WYPAKUJ MNIE
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -203,7 +203,6 @@ const Navbar = () => {
             </ListItem>
           ))}
         </List>
-        {/* Dodaj osobną pozycję dla wysyłki */}
         <ListItem disableGutters>
           <ListItemText primary="Wysyłka" />
           <Typography>{shipmentArray[0].price.toFixed(2)}</Typography>

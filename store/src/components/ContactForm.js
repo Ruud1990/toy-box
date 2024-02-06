@@ -28,7 +28,7 @@ const FormSection = styled('div')(({ theme }) => ({
 const ContactForm = () => {
   const cart = useContext(CartContext);
  const [formData, setFormData] = useState(() => {
-    // Pobieranie danych z local storage lub używanie wartości domyślnych
+    // get data from sessionStorage
     const storedFormData = sessionStorage.getItem("formData");
     return storedFormData ? JSON.parse(storedFormData) : {
       name: '',
@@ -45,13 +45,13 @@ const ContactForm = () => {
   });
 
   useEffect(() => {
-    // Odczytaj dane z localStorage po załadowaniu komponentu
+    // read data from sessionStorage
     const storedFormData = sessionStorage.getItem('formData');
     if (storedFormData) {
       setFormData(JSON.parse(storedFormData));
        console.log('Data loaded from session storage:', JSON.parse(storedFormData));
     }
-  }, []); // Pusta tablica zależności oznacza, że useEffect zostanie uruchomiony tylko raz po załadowaniu komponentu
+  }, []);
 
 
   const handleChange = (e) => {
@@ -59,25 +59,40 @@ const ContactForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handlePayment = async () => {
-    try {
-      const response = await fetch('http://localhost:4000/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ items: cart.items }),
-      });
+const handlePayment = async () => {
+  let responseClone;
+  try {
+    const response = await fetch('https://wypakujmnie.pl/checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ items: cart.items }),
+    });
 
-      const data = await response.json();
-      if (data.url) {
-        window.location.assign(data.url);
-      }
-    } catch (error) {
-      console.error('Error during payment:', error);
-      alert('Error during payment. Please try again later.');
+    // Clone the response to responseClone
+    responseClone = response.clone();
+
+    const data = await response.json();
+    if (data.url) {
+      window.location.assign(data.url);
     }
-  };
+    console.log(data);
+  } catch (error) {
+    console.error('Error during payment:', error);
+
+    // Handle JSON parse error and log raw server response
+    console.log('Error parsing JSON from response:', error, responseClone);
+
+    // If JSON parse fails, process response body as raw text
+    responseClone.text().then((bodyText) => {
+      console.log('Received the following instead of valid JSON:', bodyText);
+    });
+
+    alert('Error during payment. Please try again later.');
+  }
+};
+
 
   const sendEmail = async (e) => {
     try {
@@ -98,12 +113,12 @@ const ContactForm = () => {
   const handleCheckout = async (e) => {
     e.preventDefault();
 
-    await sendEmail(e); // Wywołanie funkcji dla wysyłki e-maila
-    await handlePayment(); // Wywołanie funkcji dla płatności
+    await sendEmail(e);
+    await handlePayment();
 
      sessionStorage.removeItem('formData');
 
-    // Czyszczenie formularza
+    // clear contact form
     setFormData({
       name: '',
       email: '',
@@ -129,7 +144,7 @@ const ContactForm = () => {
   };
 
    useEffect(() => {
-    // Zapisz dane formularza do local storage po każdej zmianie
+    // save data to sessionStorage
     sessionStorage.setItem('formData', JSON.stringify(formData));
     console.log('Data saved to sessionStorage:', formData);
   }, [formData]);

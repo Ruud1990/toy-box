@@ -25,17 +25,17 @@ const Rules = () => {
      <List>
 
       <ol>
-      <li>Niniejszy regulamin (dalej "Regulamin" określa zasady i warunki korzystania ze wypożyczalni internetowej "Fun Box" działającej pod adresem www.xyx.pl.)</li>
-      <li>BOXy zabawkowe będące przedmiotem wypożyczenia są własnością:<br></br>
-Fun Box Marta Blicharska<br></br>
+      <li>Niniejszy regulamin (dalej "Regulamin" określa zasady i warunki korzystania ze wypożyczalni internetowej "Wypakuj Mnie" działającej pod adresem www.wypakujmnie.pl.)</li>
+      <li>Boxy zabawkowe będące przedmiotem wypożyczenia są własnością:<br></br>
+Wypakuj Mnie Marta Blicharska<br></br>
 ul. Chrobrego 6/3<br></br>
 59-220 Legnica<br></br>
 działającej w ramach nierejestrowanej działalności gospodarczej.
 </li>
 <li>Dane kontaktowe wypożyczalni są następujące:<br></br>
 adres do kontaktu: Chrobrego 6/3, 59-220 Legnica<br></br>
-adres e-mail: @@@<br></br>
-nr telefonu: 49875r</li>
+adres e-mail: kontakt@wypakujmnie.pl<br></br>
+nr telefonu: 661716170</li>
       <li>Usługa Wypożyczalni skierowana jest do mieszkańców Polski. BOXy nie są wysyłane za granicę.</li>
       <li>Wypożyczający zobowiązuje się do przestrzegania warunków Regulaminu. Regulamin obowiązuje od dnia 25.01.2024r.</li>
       <li>Klient wypożycza BOX poprzez stronę internetową www.fgfgf.ooo wypełniając formularz zamówienia oraz dokonując płatności online.</li>

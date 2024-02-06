@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import EmailIcon from '@mui/icons-material/Email';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import backgroundImage from '../img/logo_fun_box.png';
+import backgroundImage from '../img/logo_wypakuj.png';
 
 const Contact = () => {
   return (
@@ -37,7 +37,7 @@ const Contact = () => {
         </a>
       </Box>
       <Typography variant="body1" sx={{ margin: '20px auto', color: '#fff', backgroundColor: 'rgba(200, 70, 300, 0.6)', width: '50%', padding: '10px', borderRadius: '5px' }}>
-        zamówienia@dndcknd
+        kontakt@wypakujmnie.pl
       </Typography>
     </Box>
   );

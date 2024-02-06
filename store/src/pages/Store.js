@@ -10,11 +10,11 @@ const Store = () => {
         sx={{
           m: 2,
           display: 'flex',
-          flexDirection: 'column', // Domyślnie ustawione na poziomo
+          flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center', // Wyśrodkowanie na ekranach mniejszych
+          justifyContent: 'center',
           '@media (min-width: 750px)': {
-            justifyContent: 'space-around', flexDirection: 'row', // Przestrzeń wokół na ekranach większych niż md
+            justifyContent: 'space-around', flexDirection: 'row',
           },
         }}
       >

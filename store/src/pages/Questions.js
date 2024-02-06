@@ -11,10 +11,10 @@ const Questions = () => {
     <Box sx={{
       marginTop: '50px',
       textAlign: 'center',
-      backgroundColor: '#f5f5f5', // Domyślne tło
+      backgroundColor: '#f5f5f5',
       padding: '20px',
       '@media (min-width:600px)': {
-        padding: '40px', // Dopasowanie w Media Query dla większych ekranów
+        padding: '40px',
       },
     }}>
           <Typography variant="h4" sx={{ color: '#333', marginBottom: '20px', '@media (max-width:600px)': { fontSize: '1.5rem' } }}>Najczęstsze pytania i odpowiedzi</Typography>

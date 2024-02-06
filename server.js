@@ -6,18 +6,22 @@
 
 // price_1OQEqmEYWs5KjxdwXZObROum    ----   box 3
 
-
+require('dotenv').config();
 const express = require('express');
-var cors = require('cors');
-const stripe = require('stripe')('sk_test_51OQEbZEYWs5KjxdwUq428u3BncbG1ODzGgNgq07BhUD26tQOVXbVdMNgpo5dA4Om1BlLJVK3WC7mFwWdMZUsy0fh00xF4k4aPE');
+const cors = require('cors');
+const API_KEY = process.env.STRIPE_SECRET_KEY_PROD;
+const stripe = require('stripe')(API_KEY);
 
 // Tu dalszy kod serwera
 
 
 const app = express();
 app.use(cors());
-app.use(express.static("public"));
+
+app.use(express.static('public_html'));
+
 app.use(express.json());
+// const port = 443;
 
 app.post("/checkout", async (req, res) => {
 
@@ -36,8 +40,8 @@ app.post("/checkout", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: 'payment',
-        success_url: "http://localhost:3000/success",
-        cancel_url: "http://localhost:3000/cancel"
+        success_url: "https://wypakujmnie.pl/success",
+        cancel_url: "https://wypakujmnie.pl/cancel"
     });
 
     res.send(JSON.stringify({
@@ -47,3 +51,7 @@ app.post("/checkout", async (req, res) => {
 
 
 app.listen(4000, () => console.log("Listening on port 4000!"));
+
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}!`);
+// });   

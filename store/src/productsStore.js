@@ -9,35 +9,36 @@
 
 
 
+
 const productsArray = [
     {
-        id: 'price_1OQEoiEYWs5Kjxdw2T5vUKKw',
+        id: 'price_1OcaHDEYWs5KjxdwsH6Vf9NN',
         title: 'Bobas',
         text: 'Zestaw dla najmłodszych w wieku 6-12 miesięcy',
-        price: 1.99,
+        price: 99.00,
         img: require('./img/Leonardo_Diffusion_XL_6_months_baby_without_hair_with_socks_ca_1.jpg')
     },
     {
-        id: 'price_1OQEpyEYWs5KjxdwBqvhxvJQ',
+        id: 'price_1OcagLEYWs5KjxdwzoO7JGyy',
         title: 'Odkrywca',
         text: 'Zestaw dla małych odkrywców w wieku 1-2 lata',
-        price: 2.99,
+        price: 99.00,
         img: require('./img/Leonardo_Diffusion_XL_2_years_old_baby_cartoon_style_use_viole_1.jpg')
     },
     {
-        id: 'price_1OQEqmEYWs5KjxdwXZObROum',
+        id: 'price_1OcaK5EYWs5Kjxdw6JplFlEy',
         title: 'Kreator',
         text: 'Zestaw pobudzający kreatywność dla 3-4 latków',
-        price: 3.99,
+        price: 99.00,
         img: require('./img/Leonardo_Diffusion_XL_4_years_old_baby_cartoon_style_use_viole_0.jpg')
     },
 ];
 
 const shipmentArray = [
     {
-        id: 'price_1OQEoiEYWs5Kjxdw2T5vUKKw',
+        id: 'price_1OcaLVEYWs5Kjxdw9DLnbwTa',
         title: 'wysyłka',
-        price: 13.00}
+        price: 15.00}
 ]
 
 function getProductData(id) {

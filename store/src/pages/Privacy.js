@@ -24,7 +24,7 @@ const Privacy = () => {
       <List>
 
       <ol>
-        <li>Administratorem danych osobowych przekazanych przez Kupującego podczas korzystania z Wypożyczalni jest Fun Box Marta Blicharska 59-220, Legnica, ul. Chrobrego 6/3.</li>
+        <li>Administratorem danych osobowych przekazanych przez Kupującego podczas korzystania z Wypożyczalni jest Wypakuj mnie Marta Blicharska 59-220, Legnica, ul. Chrobrego 6/3.</li>
         <li>Celem przetwarzania danych Klienta przez Wypożyczalnię, podanych przez Klienta w związku z zakupami w Wypożyczalni, jest realizacja zamówień. Podstawą przetwarzania danych osobowych w tym przypadku jest:
         <ul>
           <li>umowa wypożyczenia lub działania podejmowane na żądanie Kupującego, zmierzające do jej zawarcia (art. 6 ust. 1 lit. b RODO),</li>

@@ -32,7 +32,7 @@ const About = () => {
         </Paper>
         <Paper sx={{ '@media (max-width:600px)': { marginBottom: '5px' }, bgcolor: '#cfacee'}}>
           <Typography variant="body1" sx={{ '@media (max-width:600px)': { fontSize: '0.8rem' } }}>
-            W Fun Box nie tylko oferujemy zabawki - staramy się tworzyć społeczność rodziców, którzy chcą dawać swoim dzieciom najlepsze możliwości rozwoju. Nasza misja to nie tylko zmniejszanie ilości plastiku w domach, ale także promowanie elastyczności, oszczędności finansowej i wspieranie ekologicznego stylu życia.
+            W Wypakuj Mnie nie tylko oferujemy zabawki - staramy się tworzyć społeczność rodziców, którzy chcą dawać swoim dzieciom najlepsze możliwości rozwoju. Nasza misja to nie tylko zmniejszanie ilości plastiku w domach, ale także promowanie elastyczności, oszczędności finansowej i wspieranie ekologicznego stylu życia.
           </Typography>
         </Paper>
       </Grid>

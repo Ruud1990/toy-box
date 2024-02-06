@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { getProductData } from "../productsStore";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Box from '@mui/material/Box';
-import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
 
 function CartProduct(props) {
