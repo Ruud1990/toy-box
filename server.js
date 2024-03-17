@@ -37,16 +37,19 @@ app.post("/checkout", async (req, res) => {
         )
     });
 
-    const session = await stripe.checkout.sessions.create({
-        line_items: lineItems,
-        mode: 'payment',
-        success_url: "https://wypakujmnie.pl/success",
-        cancel_url: "https://wypakujmnie.pl/cancel"
-    });
+    try {
+        const session = await stripe.checkout.sessions.create({
+            line_items: lineItems,
+            mode: 'payment',
+            success_url: "https://wypakujmnie.pl/success",
+            cancel_url: "https://wypakujmnie.pl/cancel"
+        });
 
-    res.send(JSON.stringify({
-        url: session.url
-    }));
+        res.json({ url: session.url }); // Sending JSON response
+    } catch (error) {
+        console.error("Error creating checkout session:", error);
+        res.status(500).json({ error: "Failed to create checkout session" }); // Sending JSON error response
+    }
 });
 
 
