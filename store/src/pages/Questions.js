@@ -28,7 +28,7 @@ const Questions = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Każdy zestaw zawiera 7-8 zabawek różnego rodzaju, adekwatnyvh do wybranego zakresu wieku dziecka. Zabawki są nowe lub używane, ale wszystkie w bardzo dobrym stanie.
+            Każdy zestaw zawiera 7-8 zabawek różnego rodzaju, adekwatnych do wybranego zakresu wieku dziecka. Zabawki są nowe lub używane, ale wszystkie w bardzo dobrym stanie.
 
             Przy tworzeniu zestawów sięgamy po zabawki takich marek jak: JANOD, LEGO, DJECO, b.Toys, Skip Hop, Fat Brain Toys, Lilliputiens, Little Dutch, Melissa&Doug, Green Toys, Playmobil, Goki, Marionex, Dumel, Fisher Price czy VIGA.
           </Typography>
