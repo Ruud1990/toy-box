@@ -62,7 +62,7 @@ const ContactForm = () => {
 const handlePayment = async () => {
   let responseClone;
   try {
-    const response = await fetch('https://wypakujmnie.pl/checkout', {
+    const response = await fetch('https://master--wypakuj.netlify.app/checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
